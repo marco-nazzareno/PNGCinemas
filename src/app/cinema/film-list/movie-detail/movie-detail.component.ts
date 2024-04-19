@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpService} from "../../../shared/service/http.service";
 import {Movie} from "../../../shared/model/Movie.model";

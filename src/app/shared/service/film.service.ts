@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Movie} from "../model/Movie.model";
 import {BehaviorSubject} from "rxjs";
-import {Params} from "@angular/router";
 
 @Injectable({providedIn:'root'})
 export class FilmService {
