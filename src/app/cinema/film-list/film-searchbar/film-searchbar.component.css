@@ -1,0 +1,46 @@
+
+form {
+  width: 100%;
+  position: relative;
+  top:15px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+input,select {
+  display: block;
+  padding: 10px 10px 10px 0;
+  margin-left: 4px;
+  height: 50px;
+  font-family: Bahnschrift;
+  font-weight: lighter;
+  color: #fff579;
+  text-indent: 12px;
+  background-color: rgba(5,75,153,1);
+  border:none;
+  border-radius: 3px;
+}
+#searchbar {
+  width: 50%;
+  margin:0;
+}
+#genre {
+  color: whitesmoke;
+  width: 25%;
+}
+#date {
+  color: whitesmoke;
+  width: 25%;
+}
+input:hover,select:hover {
+  background-color: rgba(10,90,173,1)
+}
+input:focus,select:focus {
+  outline: none;
+  background-color: rgba(10,90,173,1)
+}
+::placeholder {
+  color: whitesmoke;
+}
+

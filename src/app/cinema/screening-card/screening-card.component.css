@@ -1,0 +1,12 @@
+.screening-card, img {
+  font-family: Bahnschrift;
+  background-color: rgba(5,75,153,1);
+  color: white;
+  border: none;
+  box-shadow: 0 0 10px rgb(0,0,0,0.5);
+}
+img {
+  height: initial;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 0 30px rgb(0,0,0,0.7);
+}

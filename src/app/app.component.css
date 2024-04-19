@@ -1,0 +1,6 @@
+#frame {
+  background: rgb(17,6,196);
+  background: radial-gradient(circle, rgba(17,6,196,1) 16%, rgba(2,0,36,1) 61%);
+  min-height: 100vh;
+  height: fit-content;
+}

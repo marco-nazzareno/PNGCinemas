@@ -1,0 +1,38 @@
+.card {
+  font-family: Bahnschrift;
+  background-color: black;
+  color: white;
+  height: 300px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 0 10px rgb(0,0,0,0.3);
+}
+.card h5 {
+  position: absolute;
+  top:10px;
+  left: 10px;
+  z-index: 2;
+}
+.card a {
+  position: absolute;
+  visibility: visible;
+  font-size: 95%;
+  bottom:15px;
+  right: 15px;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card-body:hover {
+  animation: fade 0.075s linear forwards;
+}
+@keyframes fade {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0.75;
+    visibility: visible;
+  }
+}

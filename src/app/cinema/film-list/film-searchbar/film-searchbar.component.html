@@ -1,0 +1,27 @@
+
+    <form [formGroup]="searchForm"
+          (ngSubmit)="onSearch()"
+          (change)="onSearch()">
+      <input
+        id="searchbar"
+        type="search"
+        placeholder="Cerca un film"
+        formControlName="filmName"
+        (keyup)="onSearch()"
+      >
+      <select
+        id="genre"
+        formControlName="filmGenre"
+      >
+        <option value="" hidden selected> Genere </option>
+        <option value="Action">Action</option>
+        <option value="Sci-fi">Sci-fi</option>
+        <option value="Commedia">Commedia</option>
+        <option value="Horror">Horror</option>
+      </select>
+      <input
+        id="date"
+        type="date"
+        formControlName="filmDate"
+      >
+    </form>
