@@ -1,0 +1,27 @@
+<div class="backdrop" (click)="onCloseDetail()"></div>
+<div class="detail-box">
+  <div class="row">
+    <div class="col-lg-4 imgsection" style="background-image: url(https://c8.alamy.com/compit/bkpf76/spider-man-3-2007-spiderman-3-alt-poster-spm3-001-40-bkpf76.jpg);">
+    </div>
+    <div class="col-lg-8 rightsection">
+      <div class="row">
+        <div class="col-lg-5">
+          <h4>{{ selectedFilm.title }}</h4>
+        </div>
+        <div class="col-lg">
+          <h6 class="float-lg-end">Regista: {{ selectedFilm.director }} {{ selectedFilm.relaseDate.toISOString().slice(0,4) }}</h6>
+        </div>
+      </div>
+      <p class="desc">
+          {{ selectedFilm.description }}
+      </p>
+      <div class="row">
+        <div class="col-lg">
+          <h6> Durata: {{ selectedFilm.length }} minuti </h6>
+          <h6>Generi: {{ selectedFilm.genre }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="onFurtherInfo()"> ACQUISTA BIGLIETTO</button>
+</div>

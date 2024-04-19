@@ -1,12 +1,27 @@
-.screening-card, img {
+.screening-card {
   font-family: Bahnschrift;
   background-color: rgba(5,75,153,1);
   color: white;
   border: none;
   box-shadow: 0 0 10px rgb(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
 }
-img {
-  height: initial;
+.screening-card:hover{
+  background-color: rgba(10,90,173,1);
+}
+.imgcol {
+  width: 15%;
+  height: 120px;
+  display: block;
   border-radius: 5px 0 0 5px;
   box-shadow: 0 0 30px rgb(0,0,0,0.7);
+}
+.pricecol {
+  margin-left: auto;
+}
+button {
+  position: absolute;
+  right:20px;
+  bottom: 20px;
 }

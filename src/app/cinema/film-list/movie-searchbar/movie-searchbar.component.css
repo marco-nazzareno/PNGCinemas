@@ -26,7 +26,7 @@ input,select {
   margin:0;
 }
 #genre {
-  color: whitesmoke;
+  color: lightgray;
   width: 25%;
 }
 #date {
@@ -41,6 +41,6 @@ input:focus,select:focus {
   background-color: rgba(10,90,173,1)
 }
 ::placeholder {
-  color: whitesmoke;
+  color: lightgray;
 }
 

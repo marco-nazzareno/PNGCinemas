@@ -10,9 +10,9 @@ import { CarouselComponent } from './home/carousel/carousel.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HomeComponent } from './home/home.component';
 import { LatestRelasesComponent } from './home/latest-relases/latest-relases.component';
-import { FilmCardComponent } from './film-card/film-card.component';
-import { FilmListComponent } from './cinema/film-list/film-list.component';
-import { FilmSearchbarComponent } from './cinema/film-list/film-searchbar/film-searchbar.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MovieListComponent } from './cinema/film-list/movie-list.component';
+import { MovieSearchbarComponent } from './cinema/film-list/movie-searchbar/movie-searchbar.component';
 import { ScreeningListComponent } from './cinema/screening-list/screening-list.component';
 import { ScreeningCardComponent } from './cinema/screening-card/screening-card.component';
 import { AuthComponent } from './auth/auth.component';
@@ -20,14 +20,14 @@ import {RoutingGuardService} from "./shared/service/routing-guard.service";
 import {AuthGuardService} from "./shared/service/auth-guard.service";
 import { TheatersListComponent } from './cinema/theaters-list/theaters-list.component';
 import { CinemaComponent } from './cinema/cinema.component';
-import { FilmDetailComponent } from './cinema/film-list/film-detail/film-detail.component';
+import { MovieDetailComponent } from './cinema/film-list/movie-detail/movie-detail.component';
  const routes: Routes = [
    {path: '', redirectTo: '/home', pathMatch: 'full'},
    {path: 'auth', component: AuthComponent},
    {path: 'home', component: HomeComponent},
-   {path: 'films', component: FilmListComponent, children:
+   {path: 'films', component: MovieListComponent, children:
      [
-       {path: 'detail/:filmName', component: FilmDetailComponent}
+       {path: 'detail/:id', component: MovieDetailComponent}
      ]
    },
    {path: 'tickets', component: HomeComponent, canActivate: [RoutingGuardService]},
@@ -35,7 +35,7 @@ import { FilmDetailComponent } from './cinema/film-list/film-detail/film-detail.
      [
        {path: 'screenings', component: ScreeningListComponent},
        {path: 'theaters', component: TheatersListComponent},
-       {path: 'tickets', component: FilmListComponent, canActivate: [AuthGuardService]}
+       {path: 'tickets', component: MovieListComponent, canActivate: [AuthGuardService]}
      ]
    }
  ];
@@ -47,15 +47,15 @@ import { FilmDetailComponent } from './cinema/film-list/film-detail/film-detail.
     CarouselComponent,
     HomeComponent,
     LatestRelasesComponent,
-    FilmCardComponent,
-    FilmListComponent,
-    FilmSearchbarComponent,
+    MovieCardComponent,
+    MovieListComponent,
+    MovieSearchbarComponent,
     ScreeningListComponent,
     ScreeningCardComponent,
     AuthComponent,
     TheatersListComponent,
     CinemaComponent,
-    FilmDetailComponent
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
