@@ -14,7 +14,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieListComponent } from './cinema/film-list/movie-list.component';
 import { MovieSearchbarComponent } from './cinema/film-list/movie-searchbar/movie-searchbar.component';
 import { ScreeningListComponent } from './cinema/screening-list/screening-list.component';
-import { ScreeningCardComponent } from './cinema/screening-card/screening-card.component';
+import { ScreeningCardComponent } from './cinema/screening-list/screening-card/screening-card.component';
 import { AuthComponent } from './auth/auth.component';
 import {RoutingGuardService} from "./shared/service/routing-guard.service";
 import {AuthGuardService} from "./shared/service/auth-guard.service";
@@ -25,7 +25,7 @@ import { MovieDetailComponent } from './cinema/film-list/movie-detail/movie-deta
    {path: '', redirectTo: '/home', pathMatch: 'full'},
    {path: 'auth', component: AuthComponent},
    {path: 'home', component: HomeComponent},
-   {path: 'films', component: MovieListComponent, children:
+   {path: 'movies', component: MovieListComponent, children:
      [
        {path: 'detail/:id', component: MovieDetailComponent}
      ]

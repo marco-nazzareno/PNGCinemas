@@ -25,7 +25,7 @@ input,select {
   width: 50%;
   margin:0;
 }
-#genre {
+#genre, #theatre {
   color: lightgray;
   width: 25%;
 }

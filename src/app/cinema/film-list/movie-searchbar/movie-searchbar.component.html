@@ -6,23 +6,33 @@
         id="searchbar"
         type="search"
         placeholder="Cerca un film"
-        formControlName="filmName"
+        formControlName="movie"
         (keyup)="onSearch()"
       >
       <select
         id="genre"
-        formControlName="filmGenre"
+        formControlName="filter"
+        *ngIf="searchmode==='movies'"
       >
-        <option value="" hidden selected> Genere </option>
-        <option value=""  > Qualsiasi </option>
+        <option value="" selected> Qualsiasi genere</option>
         <option value="Action">Action</option>
         <option value="Sci-fi">Sci-fi</option>
         <option value="Commedia">Commedia</option>
         <option value="Horror">Horror</option>
       </select>
+      <select
+        id="theatre"
+        formControlName="filter"
+        *ngIf="searchmode==='screenings'"
+      >
+        <option value="" selected>Tutte le sale</option>
+        <option value="1">Sala 1</option>
+        <option value="3D">Sala 3D</option>
+        <option value="ATMOS">Sala ATMOS</option>
+      </select>
       <input
         id="date"
         type="date"
-        formControlName="filmDate"
+        formControlName="date"
       >
     </form>

@@ -1,6 +1,6 @@
 <app-movie-searchbar></app-movie-searchbar>
 <div class="row">
   <div class="col-lg-12">
-    <app-screening-card *ngFor="let item of [1,2,3,4,5,6]"></app-screening-card>
+    <app-screening-card *ngFor="let screening of screenings" [screening]="screening"></app-screening-card>
   </div>
 </div>

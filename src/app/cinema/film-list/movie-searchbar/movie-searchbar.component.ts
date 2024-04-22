@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class MovieSearchbarComponent implements OnInit {
   searchForm: FormGroup;
-  searchmode: string = "films";
+  searchmode: string = "movies";
 
   constructor(private route: ActivatedRoute,
               private router: Router) {}
@@ -18,9 +18,9 @@ export class MovieSearchbarComponent implements OnInit {
       this.searchmode = url[0].path; //cambia il funzionamento della searchbar
 
       this.searchForm = new FormGroup({
-        'filmName': new FormControl(''),
-        'filmGenre': new FormControl(''),
-        'filmDate': new FormControl(this.searchmode==='films'
+        'movie': new FormControl(''),
+        'filter': new FormControl(''),
+        'date': new FormControl(this.searchmode==='movies'
           ? '2010-01-01'
           : new Date().toISOString().slice(0,10)
         ),
@@ -33,10 +33,11 @@ export class MovieSearchbarComponent implements OnInit {
         relativeTo: this.route,
         queryParams:
           {
-            'title': this.searchForm.getRawValue()['filmName'],
-            'genre': this.searchForm.getRawValue()['filmGenre'],
-            'date': this.searchForm.getRawValue()['filmDate']
-          }
+            'title': this.searchForm.getRawValue()['movie'],
+            'filter': this.searchForm.getRawValue()['filter'],
+            'date': this.searchForm.getRawValue()['date']
+          },
+
       });
   }
 }

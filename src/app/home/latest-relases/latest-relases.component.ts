@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FilmService} from "../../shared/service/film.service";
+import {MovieService} from "../../shared/service/movie.service";
 import {Movie} from "../../shared/model/Movie.model";
 import {Subscription} from "rxjs";
 
@@ -12,10 +12,10 @@ export class LatestRelasesComponent implements OnInit, OnDestroy {
   movies: Movie[];
   movieSub: Subscription;
 
-  constructor(private filmService: FilmService) {}
+  constructor(private filmService: MovieService) {}
 
   ngOnInit() {
-    this.movieSub = this.filmService.films$.subscribe(films => {
+    this.movieSub = this.filmService.movies$.subscribe(films => {
       this.movies = films;
     });
   }

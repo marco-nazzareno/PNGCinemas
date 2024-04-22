@@ -1,0 +1,27 @@
+<div class="card mb-3 screening-card">
+  <div class="imgcol" style="background-image: url(https://c8.alamy.com/compit/bkpf76/spider-man-3-2007-spiderman-3-alt-poster-spm3-001-40-bkpf76.jpg);
+    background-size: cover"
+  >
+  </div>
+  <div class="infocol">
+    <div class="card-body">
+      <h5 class="card-title">SALA {{ screening.theatre }}</h5>
+      <p class="card-text">
+        {{ screening.movie }}
+      </p>
+    </div>
+  </div>
+  <div class="pricecol">
+    <div class="card-body">
+      <h5 class="card-title">{{ screening.time.slice(0,5) }}</h5>
+      <button
+        class="btn btn-primary"
+        [disabled]="!screening.seats"
+        [ngClass]="{'btn-danger': !screening.seats, 'btn-primary': screening.seats, 'btn-warning': screening.seats<=10}"
+      >
+        {{ !screening.seats ? 'POSTI ESAURITI' : screening.seats<=10 ? 'POSTI IN ESAURIMENTO' : 'ACQUISTA BIGLIETTO' }}
+      </button>
+    </div>
+  </div>
+</div>
+

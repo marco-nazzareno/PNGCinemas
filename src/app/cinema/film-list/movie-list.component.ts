@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FilmService} from "../../shared/service/film.service";
+import {MovieService} from "../../shared/service/movie.service";
 import {Subscription} from "rxjs";
 import {Movie} from '../../shared/model/Movie.model';
 import {ActivatedRoute} from "@angular/router";
@@ -12,12 +12,12 @@ import {ActivatedRoute} from "@angular/router";
 export class MovieListComponent implements OnInit, OnDestroy {
   movieSub: Subscription;
   movies: Movie[];
-  constructor(private filmService: FilmService,
+  constructor(private filmService: MovieService,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.movieSub = this.filmService.films$.subscribe(movies => {
+      this.movieSub = this.filmService.movies$.subscribe(movies => {
         this.movies = this.filmService.filterMovies(movies, params);
       });
     });

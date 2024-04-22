@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Screening} from "../../../shared/model/Screening.model";
 
 @Component({
   selector: 'app-screening-card',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './screening-card.component.css'
 })
 export class ScreeningCardComponent {
-
+  @Input() screening: Screening;
 }

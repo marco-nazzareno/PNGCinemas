@@ -13,6 +13,6 @@ export class MovieCardComponent {
   constructor(private router:Router) {}
 
   onSelect() {
-    this.router.navigate(['/films','detail',this.movie.id]);
+    this.router.navigate(['/movies','detail',this.movie.id]);
   }
 }

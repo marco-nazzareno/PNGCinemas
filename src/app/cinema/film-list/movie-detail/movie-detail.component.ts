@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpService} from "../../../shared/service/http.service";
 import {Movie} from "../../../shared/model/Movie.model";
-import {FilmService} from "../../../shared/service/film.service";
+import {MovieService} from "../../../shared/service/movie.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -15,14 +15,14 @@ export class MovieDetailComponent implements OnInit {
   selectedCinema: string;
   filmSub: Subscription;
   constructor(private http: HttpService,
-              private filmService: FilmService,
+              private filmService: MovieService,
               private router:Router,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.http.selectedCinema.subscribe(cinema => this.selectedCinema = cinema);
     this.route.params.subscribe(params => {
-      this.filmSub = this.filmService.films$.subscribe((films: Movie[]) => {
+      this.filmSub = this.filmService.movies$.subscribe((films: Movie[]) => {
         this.selectedFilm = films.find(el => el.id === +params.id);
       });
     });
