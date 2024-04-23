@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-lg-12">
+    <app-ticket-form></app-ticket-form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <app-seat-picker
+      [theatre]="theatre"
+      *ngIf="theatre"
+    ></app-seat-picker>
+  </div>
+</div>

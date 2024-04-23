@@ -1,25 +1,36 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpService} from "../shared/service/http.service";
+import {CinemaService} from "../shared/service/cinema.service";
+import {Cinema} from "../shared/model/Cinema.model";
+import {Subscription, take} from "rxjs";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit,OnDestroy {
   collapsed = false;
-  selectedCinema: string = null;
+  selectedCinema: Cinema = null;
+  cinemas: Cinema[] = null;
+  slcinemaSub: Subscription;
 
-  constructor(private httpService: HttpService,
-              private router: Router) {}
+  constructor(private cinemaService: CinemaService) {}
 
   ngOnInit() {
-    this.httpService.selectedCinema.subscribe(cinemaName => {
-      this.selectedCinema = cinemaName;
+    this.cinemaService.cinemas$.pipe(take(1)).subscribe(cinemas => {
+      this.cinemas = cinemas;
+    });
+    this.slcinemaSub = this.cinemaService.selectedCinema$.subscribe(cinema => {
+      this.selectedCinema = cinema;
     });
   }
-  onSetCinema(name: string) {
-    this.httpService.selectedCinema.next(name);
+  ngOnDestroy() {
+    this.slcinemaSub.unsubscribe();
+  }
+
+  onSetCinema(cinema: Cinema) {
+    this.cinemaService.selectedCinema$.next(cinema);
   }
 }

@@ -11,22 +11,22 @@
           <a class="nav-link navbtn" [routerLink]="['/movies']" routerLinkActive="active"> FILM </a>
         </li>
         <li class="nav-item" *ngIf="selectedCinema">
-          <a class="nav-link navbtn" [routerLink]="['/',selectedCinema,'screenings']" routerLinkActive="active"> PROIEZIONI </a>
+          <a class="nav-link navbtn" [routerLink]="['/',selectedCinema.name,'screenings']" routerLinkActive="active"> PROIEZIONI </a>
         </li>
         <li class="nav-item">
         <a class="nav-link navbtn" [routerLink]="['/tickets']" routerLinkActive="active"> BIGLIETTI </a>
         </li>
-        <li class="nav-item" *ngIf="selectedCinema">
-          <a class="nav-link navbtn" [routerLink]="['/',selectedCinema,'theaters']" routerLinkActive="active"> SALE </a>
+        <li class="nav-item" *ngIf="selectedCinema && false">
+          <a class="nav-link navbtn" [routerLink]="['/',selectedCinema.name,'theaters']" routerLinkActive="active"> SALE </a>
         </li>
         <li class="nav-item dropdown" appDropdown *ngIf="!selectedCinema">
           <a class="nav-link dropdown-toggle">
             CINEMA
           </a>
           <div class="dropdown-menu">
-            <button class="dropdown-item" (click)="onSetCinema('Torino')">Torino</button>
-            <button class="dropdown-item" (click)="onSetCinema('Moncalieri')">Moncalieri</button>
-            <button class="dropdown-item" (click)="onSetCinema('Sibari')">Sibari</button>
+            <button class="dropdown-item" (click)="onSetCinema(cinema)" *ngFor="let cinema of cinemas">
+              {{ cinema.name }}
+            </button>
           </div>
         </li>
       </ul>

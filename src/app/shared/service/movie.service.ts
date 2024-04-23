@@ -4,7 +4,7 @@ import {BehaviorSubject} from "rxjs";
 
 @Injectable({providedIn:'root'})
 export class MovieService {
-  movies$= new BehaviorSubject([
+  movies$= new BehaviorSubject<Movie[]>([
     new Movie(1, 'Spiderman 3', new Date('2017-03-15'),'Sam Raimi','Le mitiche avventure dell\'ommo oragno parte terza.','Action, Supereroi',192),
     new Movie(2, 'Spiderman 4', new Date('2018-07-19'),'Sam Raimi','Le mitiche avventure dell\'ommo oragno parte quarta.','Action, Supereroi',158),
     new Movie(3, 'Spiderman 5', new Date('2019-01-05'),'Sam Raimi','Le mitiche avventure dell\'ommo oragno parte quinta.','Action, Supereroi',175),
@@ -16,8 +16,8 @@ export class MovieService {
       (filters.title
         ? movie.title.toLowerCase().includes(filters.title.toLowerCase())
         : true
-      ) && (filters.genre
-        ? movie.genre.toLowerCase().includes(filters.genre.toLowerCase())
+      ) && (filters.filter
+        ? movie.genre.toLowerCase().includes(filters.filter.toLowerCase())
         : true
       ) && (filters.date
         ? movie.relaseDate >= new Date(filters.date)

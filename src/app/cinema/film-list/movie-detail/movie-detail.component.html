@@ -23,5 +23,10 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" (click)="onFurtherInfo()"> ACQUISTA BIGLIETTO</button>
+  <button class="btn btn-primary"
+          (click)="onFurtherInfo()"
+          [disabled]="!selectedCinema || !loggedIn"
+  >
+    {{ !selectedCinema ? 'SELEZIONA UN CINEMA' : !loggedIn ? 'ACCEDI PER ACQUISTARE' :' ACQUISTA IL BIGLIETTO'}}
+  </button>
 </div>
