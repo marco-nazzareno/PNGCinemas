@@ -1,0 +1,61 @@
+.card {
+  margin-top: 20px;
+
+  border:none;
+  font-family: Bahnschrift;
+}
+.card-header {
+  padding-top: 15px;
+  text-align: center;
+  background-color: rgba(1,1,92,1);
+  color: white;
+}
+.card-body {
+  background-color: rgba(5,75,153,1);
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 0 20px rgb(0,0,0,0.5);
+}
+#seatsgrid {
+  height:40vh;
+  margin: 0 20% 0 20%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+.seat {
+  background-color: midnightblue;
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+  font-size: 85%;
+  text-align: center;
+  color: #fff579;
+  border-radius: 3px;
+  box-shadow: 1px 2px 1px rgb(0,0,0,0.5);
+}
+.seat:hover {
+  background-color:  #fff579;
+  color: black;
+}
+@media screen and (max-width: 750px) {
+  #seatsgrid {
+    margin: 0 0 0 0;
+  }
+}
+.occupied {
+  background-color: darkgray;
+  color: black;
+}
+.occupied:hover {
+  background-color: darkgray;
+  color: black;
+}
+.selected {
+  background-color: green;
+  color: white;
+}
+.selected:hover {
+  background-color: green;
+  color: white;
+}

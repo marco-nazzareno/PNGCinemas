@@ -18,6 +18,7 @@
         class="btn btn-primary"
         [disabled]="!screening.seats"
         [ngClass]="{'btn-danger': !screening.seats, 'btn-primary': screening.seats, 'btn-warning': screening.seats<=10}"
+        (click)="onPurchaseTicket()"
       >
         {{ !screening.seats ? 'POSTI ESAURITI' : screening.seats<=10 ? 'POSTI IN ESAURIMENTO' : 'ACQUISTA BIGLIETTO' }}
       </button>

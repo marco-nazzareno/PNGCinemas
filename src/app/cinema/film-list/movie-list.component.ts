@@ -16,9 +16,9 @@ export class MovieListComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(qparams => {
       this.movieSub = this.filmService.movies$.subscribe(movies => {
-        this.movies = this.filmService.filterMovies(movies, params);
+        this.movies = this.filmService.filterMovies(movies, qparams);
       });
     });
   }

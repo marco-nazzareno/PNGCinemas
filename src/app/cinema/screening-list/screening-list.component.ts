@@ -18,9 +18,9 @@ export class ScreeningListComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe(qparams => {
       this.screeningSub = this.screeningService.screenings$.subscribe(screenings => {
-        this.screenings = this.screeningService.filterScreenings(screenings, params);
+        this.screenings = this.screeningService.filterScreenings(screenings, qparams);
       });
     });
   }

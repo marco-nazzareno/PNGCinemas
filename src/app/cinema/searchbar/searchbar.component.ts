@@ -29,7 +29,7 @@ export class SearchbarComponent implements OnInit {
           : new Date().toISOString().slice(0,10)
         ),
       });
-      this.route.queryParams //Quando i qparams cambiano (SOLO per la prima volta) popola il form.
+      this.route.queryParams //Quando i qparams cambiano (SOLO per la prima volta) popola il form in partenza.
         .pipe(take(1))
         .subscribe(qparams => {
         this.searchForm.patchValue({'movie': qparams.title}, );
@@ -41,15 +41,15 @@ export class SearchbarComponent implements OnInit {
   }
   onSearch() {
     this.router.navigate([],
-      {
-        relativeTo: this.route,
-        queryParams:
-          {
-            'title': this.searchForm.getRawValue()['movie'],
-            'filter': this.searchForm.getRawValue()['filter'],
-            'date': this.searchForm.getRawValue()['date']
-          },
-        }
-      );
+    {
+      relativeTo: this.route,
+      queryParams:
+        {
+          'movie': this.searchForm.getRawValue()['movie'],
+          'filter': this.searchForm.getRawValue()['filter'],
+          'date': this.searchForm.getRawValue()['date']
+        },
+      }
+    );
   }
 }

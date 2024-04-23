@@ -6,32 +6,42 @@ import {MovieService} from "./movie.service";
 @Injectable({providedIn:'root'})
 export class ScreeningService {
   screenings$ = new BehaviorSubject<Screening[]>([
-    new Screening(1, new Date('2024-04-23'), '16:00:00', 50,'1','Spiderman 3'),
-    new Screening(2, new Date('2024-04-23'), '19:00:00', 50,'1','Spiderman 4'),
-    new Screening(2, new Date('2024-04-23'), '22:00:00', 50,'1','Spiderman 5'),
-    new Screening(1, new Date('2024-04-23'), '16:00:00', 60,'3D','Spiderman 3'),
-    new Screening(2, new Date('2024-04-23'), '19:00:00', 60,'3D','Spiderman 4'),
-    new Screening(2, new Date('2024-04-23'), '22:00:00', 60,'3D','Spiderman 5'),
-    new Screening(1, new Date('2024-04-23'), '16:00:00', 40,'ATMOS','Spiderman 3'),
-    new Screening(2, new Date('2024-04-23'), '19:00:00', 40,'ATMOS','Spiderman 4'),
-    new Screening(2, new Date('2024-04-23'), '22:00:00', 40,'ATMOS','Spiderman 6'),
+    new Screening(1,'2024-04-23','16:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 3'),
+    new Screening(2,'2024-04-23','19:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 4'),
+    new Screening(2,'2024-04-23','22:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 5'),
+    new Screening(1,'2024-04-23','16:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 3'),
+    new Screening(2,'2024-04-23','19:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 4'),
+    new Screening(2,'2024-04-23','22:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 5'),
+    new Screening(1,'2024-04-23','16:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 3'),
+    new Screening(2,'2024-04-23','19:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 4'),
+    new Screening(2,'2024-04-23','22:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 6'),
   ]);
 
   filterScreenings(screenings: Screening[], filters: {[key: string]: string}): Screening[] {
-    const filtered = screenings.filter(screening => {
-      return (filters.title
-          ? screening.movie.toLowerCase().includes(filters.title.toLowerCase())
+    return screenings.filter(screening => {
+      return (filters.movie
+          ? screening.movie.toLowerCase().includes(filters.movie.toLowerCase())
           : true
         ) && (filters.filter
           ? screening.theatre.toLowerCase().includes(filters.filter.toLowerCase())
           : true
         ) && (filters.date
-          ? screening.date.getDate() >= new Date(filters.date).getDate() &&
-            screening.date.getDate() < new Date(filters.date).getDate()+1
-          : screening.date.getDate() >= new Date().getDate() &&
-            screening.date.getDate() < new Date().getDate()+1
+          ? new Date(screening.date).getDate() >= new Date(filters.date).getDate() &&
+            new Date(screening.date).getDate() < new Date(filters.date).getDate()+1
+          : new Date(screening.date).getDate() >= new Date().getDate() &&
+            new Date(screening.date).getDate() < new Date().getDate()+1
       )
     });
-    return filtered;
+  }
+  findScreening(screenings: Screening[], filters: {[key: string]: string}): Screening {
+    return screenings.find(screening => {
+      return (
+        screening.movie.toLowerCase() === filters.movie.toLowerCase() &&
+        screening.date === filters.date &&
+        screening.date === filters.date &&
+        screening.time === filters.time &&
+        screening.theatre === filters.theatre
+      )
+    });
   }
 }

@@ -42,7 +42,7 @@ export class MovieDetailComponent implements OnInit {
       {
         queryParams:
           {
-            'title': this.selectedFilm.title,
+            'movie': this.selectedFilm.title,
             'filter': '',
             'date': ''
           }
