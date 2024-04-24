@@ -5,25 +5,15 @@ import {MovieService} from "./movie.service";
 
 @Injectable({providedIn:'root'})
 export class ScreeningService {
-  screenings$ = new BehaviorSubject<Screening[]>([
-    new Screening(1,'2024-04-23','16:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 3'),
-    new Screening(2,'2024-04-23','19:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 4'),
-    new Screening(2,'2024-04-23','22:00:00',50,'00000000000000000000000000000000000000000000000000','1','Spiderman 5'),
-    new Screening(1,'2024-04-23','16:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 3'),
-    new Screening(2,'2024-04-23','19:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 4'),
-    new Screening(2,'2024-04-23','22:00:00',60,'00000000000000000000000000000000000000000000000000','3D','Spiderman 5'),
-    new Screening(1,'2024-04-23','16:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 3'),
-    new Screening(2,'2024-04-23','19:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 4'),
-    new Screening(2,'2024-04-23','22:00:00',40,'00000000000000000000000000000000000000000000000000','ATMOS','Spiderman 6'),
-  ]);
+  screenings$ = new BehaviorSubject<Screening[]>(null);
 
   filterScreenings(screenings: Screening[], filters: {[key: string]: string}): Screening[] {
-    return screenings.filter(screening => {
+    return screenings?.filter(screening => {
       return (filters.movie
-          ? screening.movie.toLowerCase().includes(filters.movie.toLowerCase())
+          ? screening.movieTitle.toLowerCase().includes(filters.movie.toLowerCase())
           : true
         ) && (filters.filter
-          ? screening.theatre.toLowerCase().includes(filters.filter.toLowerCase())
+          ? screening.theatreName.toLowerCase().includes(filters.filter.toLowerCase())
           : true
         ) && (filters.date
           ? new Date(screening.date).getDate() >= new Date(filters.date).getDate() &&
@@ -36,11 +26,11 @@ export class ScreeningService {
   findScreening(screenings: Screening[], filters: {[key: string]: string}): Screening {
     return screenings.find(screening => {
       return (
-        screening.movie.toLowerCase() === filters.movie.toLowerCase() &&
+        screening.movieTitle.toLowerCase() === filters.movie.toLowerCase() &&
         screening.date === filters.date &&
         screening.date === filters.date &&
         screening.time === filters.time &&
-        screening.theatre === filters.theatre
+        screening.theatreName === filters.theatre
       )
     });
   }

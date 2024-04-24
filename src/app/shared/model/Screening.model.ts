@@ -4,8 +4,8 @@ export class Screening {
               public time: string,
               public seats: number,
               public seatsMapping: string,
-              public theatre: string,
-              public movie: string) {
+              public theatreName: string,
+              public movieTitle: string) {
 
   }
 }

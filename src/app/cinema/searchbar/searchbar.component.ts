@@ -25,7 +25,7 @@ export class SearchbarComponent implements OnInit {
         'movie': new FormControl(''),
         'filter': new FormControl(''),
         'date': new FormControl(this.searchmode==='movies'
-          ? '2010-01-01'
+          ? '1980-01-01'
           : new Date().toISOString().slice(0,10)
         ),
       });

@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {HttpService} from "../../../shared/service/http.service";
 import {Movie} from "../../../shared/model/Movie.model";
 import {MovieService} from "../../../shared/service/movie.service";
-import {Subscription} from "rxjs";
+import {Subscription, take} from "rxjs";
 import {CinemaService} from "../../../shared/service/cinema.service";
 import {Cinema} from "../../../shared/model/Cinema.model";
 import {AuthService} from "../../../shared/service/auth.service";
@@ -15,9 +15,9 @@ import {AuthService} from "../../../shared/service/auth.service";
 })
 export class MovieDetailComponent implements OnInit {
   loggedIn: boolean;
-  selectedFilm: Movie;
+  selectedMovie: Movie;
   selectedCinema: Cinema;
-  filmSub: Subscription;
+  movieSub: Subscription;
   constructor(private cinemaService: CinemaService,
               private movieService: MovieService,
               private authService: AuthService,
@@ -29,8 +29,8 @@ export class MovieDetailComponent implements OnInit {
     this.cinemaService.selectedCinema$.subscribe(cinema => this.selectedCinema = cinema);
 
     this.route.params.subscribe(params => {
-      this.filmSub = this.movieService.movies$.subscribe((films: Movie[]) => {
-        this.selectedFilm = films.find(el => el.id === +params.id);
+      this.movieSub = this.movieService.movies$.subscribe((movies: Movie[]) => {
+        this.selectedMovie = movies?.find(el => el.id === +params.id);
       });
     });
   }
@@ -42,7 +42,7 @@ export class MovieDetailComponent implements OnInit {
       {
         queryParams:
           {
-            'movie': this.selectedFilm.title,
+            'movie': this.selectedMovie.title,
             'filter': '',
             'date': ''
           }

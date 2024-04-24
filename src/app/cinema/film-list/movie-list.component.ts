@@ -14,15 +14,14 @@ export class MovieListComponent implements OnInit, OnDestroy {
   movieSub: Subscription;
   movies: Movie[];
   constructor(private httpService: HttpService,
-              private filmService: MovieService,
+              private movieService: MovieService,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(qparams => {
       this.httpService.getMoviesByDate(qparams.date || '1980-01-01');
-
-      this.movieSub = this.filmService.movies$.subscribe(movies => {
-        this.movies = this.filmService.filterMovies(movies, qparams);
+      this.movieSub = this.movieService.movies$.subscribe(movies => {
+        this.movies = this.movieService.filterMovies(movies, qparams);
       });
     });
   }

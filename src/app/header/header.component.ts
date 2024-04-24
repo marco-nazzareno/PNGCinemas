@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
               private cinemaService: CinemaService) {}
 
   ngOnInit() {
-    this.cinemaService.cinemas$.pipe(take(1)).subscribe(cinemas => {
+    this.cinemaService.cinemas$.pipe(take(2)).subscribe(cinemas => {
       this.cinemas = cinemas;
     });
     this.slcinemaSub = this.cinemaService.selectedCinema$.subscribe(cinema => {

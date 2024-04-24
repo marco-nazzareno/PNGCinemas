@@ -26,7 +26,7 @@ export class TicketsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(qparams => {
       this.httpService.getScreeningsByCinemaIdAndDate(
-        this.cinemaService.selectedCinema$.getValue().name,
+        this.cinemaService.selectedCinema$.getValue().id,
         qparams.date || new Date().toISOString().slice(0,10)
       )
 
@@ -34,7 +34,7 @@ export class TicketsComponent implements OnInit {
         this.screeningService.screenings$.pipe(take(1)).subscribe(screenings => {
           this.screeningToBook = this.screeningService.findScreening(screenings, qparams);
           this.screeningTheatre = this.theatreService.theatres$.getValue().find(theatre => {
-            return theatre.name === this.screeningToBook?.theatre;
+            return theatre.name === this.screeningToBook?.theatreName;
           });
         });
       }

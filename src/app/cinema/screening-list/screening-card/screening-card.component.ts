@@ -24,10 +24,10 @@ export class ScreeningCardComponent implements OnInit {
       {
         queryParams:
           {
-            'movie': this.screening.movie,
+            'movie': this.screening.movieTitle,
             'date': this.screening.date,
             'time': this.screening.time,
-            'theatre': this.screening.theatre
+            'theatre': this.screening.theatreName
           }
       });
   }

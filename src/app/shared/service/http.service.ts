@@ -23,7 +23,7 @@ export class HttpService {
       .subscribe(response => this.cinemaService.cinemas$.next(response));
   }
   getTheatresByCinemaName(cinemaName: string) {
-    this.http.get<Theatre[]>(`http://localhost:8080/pngcinema/${cinemaName}/theatresbycinemaname`)
+    this.http.get<Theatre[]>(`http://localhost:8080/pngcinema/cinema/${cinemaName}/theatresbycinemaname`)
       .subscribe(response => this.theatreService.theatres$.next(response));
   }
   getLatestMovies() {
@@ -34,7 +34,7 @@ export class HttpService {
     this.http.get<Movie[]>(`http://localhost:8080/pngcinema/movies/${relaseDate}`)
       .subscribe(response => this.movieService.movies$.next(response));
   }
-  getScreeningsByCinemaIdAndDate(cinemaId: string, date: string) {
+  getScreeningsByCinemaIdAndDate(cinemaId: number, date: string) {
     this.http.get<Screening[]>(`http://localhost:8080/pngcinema/cinema/${cinemaId}/screeningsbydate/${date}`)
       .subscribe(response => this.screeningService.screenings$.next(response));
   }
