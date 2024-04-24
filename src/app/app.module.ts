@@ -24,6 +24,7 @@ import { MovieDetailComponent } from './cinema/film-list/movie-detail/movie-deta
 import {TicketsComponent} from "./cinema/tickets/tickets.component";
 import { TicketFormComponent } from './cinema/tickets/ticket-form/ticket-form.component';
 import { SeatPickerComponent } from './cinema/tickets/seat-picker/seat-picker.component';
+import {HttpClientModule} from "@angular/common/http";
  const routes: Routes = [
    {path: '', redirectTo: '/home', pathMatch: 'full'},
    {path: 'auth', component: AuthComponent},
@@ -68,6 +69,7 @@ import { SeatPickerComponent } from './cinema/tickets/seat-picker/seat-picker.co
     FormsModule,
     ReactiveFormsModule,
     NgbCarouselModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
 
   ],

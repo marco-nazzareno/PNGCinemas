@@ -15,8 +15,8 @@ export class LatestRelasesComponent implements OnInit, OnDestroy {
   constructor(private filmService: MovieService) {}
 
   ngOnInit() {
-    this.movieSub = this.filmService.movies$.subscribe(films => {
-      this.movies = films;
+    this.movieSub = this.filmService.movies$.subscribe(movies => {
+      this.movies = movies;
     });
   }
   ngOnDestroy() {

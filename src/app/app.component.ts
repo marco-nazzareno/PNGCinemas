@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {HttpService} from "./shared/service/http.service";
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  constructor() {}
-  ngOnInit() {}
+  constructor(private httpService: HttpService) {}
+  ngOnInit() {
+    this.httpService.getCinemas();
+  }
 }

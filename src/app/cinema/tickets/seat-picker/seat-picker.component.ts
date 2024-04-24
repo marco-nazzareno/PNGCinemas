@@ -25,6 +25,7 @@ export class SeatPickerComponent {
     }
   }
   onConfirm() {
+    this.httpService.putTicket(this.screening.id, this.selectedPosition+1);
     this.router.navigate(['/',this.cinemaService.selectedCinema$.getValue().name,'screenings'])
   }
   isOccupied(position: number) {

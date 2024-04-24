@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
 import {HttpService} from "../shared/service/http.service";
 import {CinemaService} from "../shared/service/cinema.service";
 import {Cinema} from "../shared/model/Cinema.model";
@@ -16,7 +15,8 @@ export class HeaderComponent implements OnInit,OnDestroy {
   cinemas: Cinema[] = null;
   slcinemaSub: Subscription;
 
-  constructor(private cinemaService: CinemaService) {}
+  constructor(private httpService: HttpService,
+              private cinemaService: CinemaService) {}
 
   ngOnInit() {
     this.cinemaService.cinemas$.pipe(take(1)).subscribe(cinemas => {
@@ -32,5 +32,6 @@ export class HeaderComponent implements OnInit,OnDestroy {
 
   onSetCinema(cinema: Cinema) {
     this.cinemaService.selectedCinema$.next(cinema);
+    this.httpService.getTheatresByCinemaName(cinema.name);
   }
 }
