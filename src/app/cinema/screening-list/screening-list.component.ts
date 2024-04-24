@@ -15,10 +15,13 @@ import {CinemaService} from "../../shared/service/cinema.service";
 })
 export class ScreeningListComponent implements OnInit, OnDestroy {
   screenings: Screening[];
+  movies: Movie[];
   screeningSub: Subscription;
+
   constructor(private httpService: HttpService,
               private cinemaService: CinemaService,
               private screeningService: ScreeningService,
+              private movieService: MovieService,
               private route: ActivatedRoute) {}
 
   ngOnInit() {

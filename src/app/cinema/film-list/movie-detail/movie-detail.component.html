@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="onCloseDetail()"></div>
 <div class="detail-box" *ngIf="selectedMovie">
   <div class="row">
-    <div class="col-lg-4 imgsection" style="background-image: url(https://c8.alamy.com/compit/bkpf76/spider-man-3-2007-spiderman-3-alt-poster-spm3-001-40-bkpf76.jpg);">
+    <div class="col-lg-4 imgsection" [ngStyle]="{'background-image': imgPath}">
     </div>
     <div class="col-lg-8 rightsection">
       <div class="row">

@@ -5,7 +5,8 @@ export class Screening {
               public seats: number,
               public seatsMapping: string,
               public theatreName: string,
-              public movieTitle: string) {
+              public movieTitle: string,
+              public movieId: number) {
 
   }
 }

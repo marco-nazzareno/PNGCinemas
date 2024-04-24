@@ -16,6 +16,7 @@ import {AuthService} from "../../../shared/service/auth.service";
 export class MovieDetailComponent implements OnInit {
   loggedIn: boolean;
   selectedMovie: Movie;
+  imgPath: string;
   selectedCinema: Cinema;
   movieSub: Subscription;
   constructor(private cinemaService: CinemaService,
@@ -31,6 +32,7 @@ export class MovieDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.movieSub = this.movieService.movies$.subscribe((movies: Movie[]) => {
         this.selectedMovie = movies?.find(el => el.id === +params.id);
+        this.imgPath = `url(/assets/img/Movie${this.selectedMovie.id}.jpg)`;
       });
     });
   }
