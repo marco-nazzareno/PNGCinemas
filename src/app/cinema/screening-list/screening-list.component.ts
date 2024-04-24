@@ -27,7 +27,7 @@ export class ScreeningListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.queryParams.subscribe(qparams => {
       this.httpService.getScreeningsByCinemaIdAndDate(
-        this.cinemaService.selectedCinema$.getValue().id,
+        this.cinemaService.selectedCinema$.getValue()?.id,
         qparams.date || new Date().toISOString().slice(0,10)
       );
 

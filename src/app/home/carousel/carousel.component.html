@@ -8,8 +8,7 @@
   @for (img of images; track img; let i = $index) {
     <ng-template ngbSlide>
       <a>
-        <div class="picsum-img-wrapper slide">
-          <img [src]="img" alt="My image {{ i + 1 }} description"/>
+        <div class="picsum-img-wrapper slide" [ngStyle]="{'background-image': img}">
         </div>
       </a>
     </ng-template>

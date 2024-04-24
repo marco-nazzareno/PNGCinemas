@@ -14,10 +14,7 @@
     *ngIf="searchmode==='movies'"
   >
     <option value="" selected> Qualsiasi genere</option>
-    <option value="Action">Action</option>
-    <option value="Sci-fi">Sci-fi</option>
-    <option value="Commedia">Commedia</option>
-    <option value="Horror">Horror</option>
+    <option [value]="genre" *ngFor="let genre of genres">{{ genre }}</option>
   </select>
   <select
     id="theatre"

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {TheatreService} from "../../shared/service/theatre.service";
 import {Theatre} from "../../shared/model/Theatre.model";
 import {take} from "rxjs";
+import { MovieService } from '../../shared/service/movie.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -14,8 +15,10 @@ export class SearchbarComponent implements OnInit {
   searchForm: FormGroup;
   searchmode: string = "movies";
   theatres: Theatre[];
+  genres: string[] = [];
 
   constructor(private theatreService: TheatreService,
+              private movieService: MovieService,
               private route: ActivatedRoute,
               private router: Router) {}
   ngOnInit() {
@@ -38,6 +41,12 @@ export class SearchbarComponent implements OnInit {
     this.theatreService.theatres$
       .pipe(take(1))
       .subscribe(theatres => this.theatres = theatres);
+    this.movieService.movies$.pipe(take(1)).subscribe(movies => {
+      movies.forEach(movie => {
+        if(!this.genres.includes(movie.genre))
+          this.genres.push(movie.genre)
+      });
+    });  
   }
   onSearch() {
     this.router.navigate([],
