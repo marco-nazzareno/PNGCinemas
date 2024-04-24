@@ -1,0 +1,57 @@
+.card {
+  margin-top: 20px;
+
+  border:none;
+  font-family: Bahnschrift;
+  font-size: 90%;
+}
+.card-header {
+  padding-top: 15px;
+  text-align: center;
+  background-color: rgba(1,1,92,1);
+  color: white;
+}
+.card-body {
+  padding: 20px 0 20px 0;
+  background-color: rgba(5,75,153,1);
+  border-radius: inherit;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 0 20px rgb(0,0,0,0.5);
+}
+.card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+form {
+  width:60%;
+}
+form input {
+  width: calc(100% - 4px);
+  height: 40px;
+}
+form>input,select {
+
+  width: calc(33% - 3px);
+  height: 40px;
+}
+form input:last-of-type {
+  position: relative;
+  top: -1px;
+  width: calc(33% - 0.1em);
+  margin-right: 0px;
+}
+form * {
+  background-color:#fff579;
+  border-radius: 2px;
+  color: gray;
+  border: none;
+  margin:2px;
+  padding: 0 20px 0 0;
+  text-indent: 3px;
+}
+form *:focus {
+  outline: transparent;
+}
+

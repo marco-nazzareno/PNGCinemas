@@ -1,21 +1,28 @@
 .card {
   margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
 
   border:none;
   font-family: Bahnschrift;
 }
 .card-header {
   padding-top: 15px;
+  height: 50px;
   text-align: center;
   background-color: rgba(1,1,92,1);
   color: white;
 }
+.card-footer {
+  background-color: #fff579;
+  padding: 15px 5% 60px 5%;
+}
 .card-body {
+  overflow: hidden;
   background-color: rgba(5,75,153,1);
-  border-radius: inherit;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-radius: 0;
   box-shadow: 0 0 20px rgb(0,0,0,0.5);
+  padding-bottom: 20px;
 }
 #seatsgrid {
   height:40vh;
@@ -59,3 +66,45 @@
   background-color: green;
   color: white;
 }
+.ticket-prompt {
+  animation: slide 0.15s linear forwards;
+  background-color: dimgray;
+  padding: 15px 5% 60px 5%;
+  position: absolute;
+  color: white;
+  top:50px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px);
+  opacity: 0.9;
+}
+p {
+  width: 100%;
+  margin:0;
+}
+span {
+  float: right;
+}
+#confirm {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+#cancel {
+  position: absolute;
+  right: 15px;
+  transform: translateX(-100%);
+  bottom: 15px;
+  margin-right: 20px;
+}
+@keyframes slide {
+  from {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  to {
+    transform-origin: top;
+    transform: scaleY(100%);
+  }
+}
+

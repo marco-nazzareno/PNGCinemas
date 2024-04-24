@@ -1,22 +1,26 @@
 <div class="card">
-  <div class="card-header"> ACQUISTA BIGLIETTO </div>
+  <div class="card-header">
+    <h5>ACQUISTA BIGLIETTO</h5>
+  </div>
   <div class="card-body">
     <form [formGroup]="ticketForm"
           (ngSubmit)="onSearch()"
           (change)="onSearch()"
     >
-      <input
-        id="searchbar"
-        type="search"
-        placeholder="Scegli un film"
-        formControlName="movie"
-        (keyup)="onSearch()"
-      >
+      <div>
+        <input
+          id="searchbar"
+          type="search"
+          placeholder="Scegli un film"
+          formControlName="movie"
+          (keyup)="onSearch()"
+        >
+      </div>
       <select
         id="theatre"
         formControlName="theatre"
       >
-        <option value="" selected>
+        <option value="" selected hidden>
           Scegli una sala
         </option>
         <option [value]="theatre.name" *ngFor="let theatre of theatres">
@@ -27,7 +31,7 @@
         id="time"
         formControlName="time"
       >
-        <option value="" selected> Scegli un orario</option>
+        <option value="" selected hidden> Scegli un orario</option>
         <option value="16:00:00">16:00</option>
         <option value="19:00:00">19:00</option>
         <option value="22:00:00">22:00</option>

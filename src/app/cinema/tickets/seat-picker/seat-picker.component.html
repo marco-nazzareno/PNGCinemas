@@ -1,16 +1,32 @@
+
 <div class="card">
+
+
   <div class="card-header">
     <h5>SALA {{ theatre.name }}</h5>
   </div>
   <div class="card-body">
+    <div class="ticket-prompt" *ngIf="selectedPosition">
+      <p>Film: <span>{{ screening.movie }}</span></p>
+      <p>Data: <span>{{ screening.date.replaceAll('-','/') }}</span></p>
+      <p>Orario: <span>{{  screening.time.slice(0,5) }}</span></p>
+      <p>Posto: <span>{{  theatre.seats.split(', ')[selectedPosition] }}</span></p>
+      <p>Prezzo sala: <span>{{  theatre.price }}0</span></p>
+      <hr style="color: white;opacity: 1">
+      <p>Totale: <span>{{  theatre.price }}0</span></p>
+      <button id='cancel' class="btn btn-warning" (click)="selectedPosition=null">INDIETRO</button>
+      <button id='confirm' class="btn btn-primary" (click)="onConfirm()">CONFERMA</button>
+    </div>
     <div id="seatsgrid">
       <div class="seat"
-        *ngFor="let seat of theatre.seats.split(', '); let i=index"
-        (click)="onSelectSeat(i)"
-        [ngClass]="{'occupied': isOccupied(i), 'selected': i==selectedPosition}"
+           *ngFor="let seat of theatre.seats.split(', '); let i=index"
+           (click)="onSelectSeat(i)"
+           [ngClass]="{'occupied': isOccupied(i), 'selected': i==selectedPosition}"
       >
         {{ seat }}
       </div>
     </div>
   </div>
 </div>
+
+

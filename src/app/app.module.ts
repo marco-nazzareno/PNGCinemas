@@ -68,7 +68,6 @@ import { SeatPickerComponent } from './cinema/tickets/seat-picker/seat-picker.co
     FormsModule,
     ReactiveFormsModule,
     NgbCarouselModule,
-
     RouterModule.forRoot(routes)
 
   ],
