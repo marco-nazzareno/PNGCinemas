@@ -9,6 +9,7 @@ import {TheatreService} from "./theatre.service";
 import {Movie} from "../model/Movie.model";
 import {Theatre} from "../model/Theatre.model";
 import {Screening} from "../model/Screening.model";
+import { Ticket } from "../model/Ticket.model";
 
 @Injectable({providedIn: 'root'})
 export class HttpService {
@@ -41,5 +42,8 @@ export class HttpService {
   putTicket(screeningId: number, ticketId: number){
     this.http.put(`http://localhost:8080/pngcinema/screenings/${screeningId}/preordertickets/${ticketId}`, {})
       .subscribe(() => console.log('Biglietto Prenotato'));
+  }
+  getBookedTickets() {
+    return this.http.get<Ticket[]>(`http://localhost:8080/pngcinema/bookedtickets`);
   }
 }
