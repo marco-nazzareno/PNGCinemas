@@ -10,6 +10,7 @@ import {Movie} from "../model/Movie.model";
 import {Theatre} from "../model/Theatre.model";
 import {Screening} from "../model/Screening.model";
 import { Ticket } from "../model/Ticket.model";
+import { Router } from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class HttpService {
@@ -17,7 +18,8 @@ export class HttpService {
               private cinemaService: CinemaService,
               private movieService: MovieService ,
               private screeningService: ScreeningService,
-              private theatreService: TheatreService,) {}
+              private theatreService: TheatreService,
+              private router: Router) {}
 
   getCinemas() {
     this.http.get<Cinema[]>(`http://localhost:8080/pngcinema/cinema`)
@@ -41,7 +43,7 @@ export class HttpService {
   }
   putTicket(screeningId: number, ticketId: number){
     this.http.put(`http://localhost:8080/pngcinema/screenings/${screeningId}/preordertickets/${ticketId}`, {})
-      .subscribe(() => console.log('Biglietto Prenotato'));
+      .subscribe(() => this.router.navigate(['/','auth']));
   }
   getBookedTickets() {
     return this.http.get<Ticket[]>(`http://localhost:8080/pngcinema/bookedtickets`);

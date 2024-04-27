@@ -15,9 +15,7 @@ export class SeatPickerComponent {
   @Input() screening: Screening;
   selectedPosition: number;
 
-  constructor(private httpService: HttpService,
-              private cinemaService: CinemaService,
-              private router:Router) {}
+  constructor(private httpService: HttpService) {}
 
   onSelectSeat(position: number) {
     if(!this.isOccupied(position)) {
@@ -26,7 +24,6 @@ export class SeatPickerComponent {
   }
   onConfirm() {
     this.httpService.putTicket(this.screening.id, this.selectedPosition+1);
-    this.router.navigate(['/','auth']);
   }
   isOccupied(position: number) {
     if(this.screening.seatsMapping.charAt(position)==='1')
