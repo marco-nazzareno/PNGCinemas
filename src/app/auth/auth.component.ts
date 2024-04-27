@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ticket } from '../shared/model/Ticket.model';
+import { HttpService } from '../shared/service/http.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,9 +10,9 @@ import { Ticket } from '../shared/model/Ticket.model';
 export class AuthComponent implements OnInit {
   tickets: Ticket[] = [];
 
-  constructor(private httpService) {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.getBookedTickets.subscribe((response: Ticket[]) => this.tickets = response);
+    this.httpService.getBookedTickets().subscribe((response: Ticket[]) => this.tickets = response);
   }
 }

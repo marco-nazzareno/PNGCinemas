@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Cinema} from "../model/Cinema.model";
 import {HttpClient} from "@angular/common/http";
 import {CinemaService} from "./cinema.service";
